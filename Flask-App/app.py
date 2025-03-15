@@ -75,5 +75,11 @@ def upload_file():
 def download_file(filename):
     return send_file(f"static/{filename}", as_attachment=True)
 
+
+@app.route("/")
+def home():
+    return "Hello, Render!"
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if no PORT is set
+    app.run(host="0.0.0.0", port=port)
